@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="colours.xacro"/>
+
+    <!-- Base Link -->
+    <link name="base_link">
+    <visual>
+        <geometry>
+        <box size="1.2 0.8 0.5"/>
+        </geometry>
+        <origin xyz="0 0 0.25" rpy="0 0 0"/>
+        <material name="blue"/>
+    </visual>
+    <collision>
+        <geometry>
+        <box size="1.2 0.8 0.5"/>
+        </geometry>
+        <origin xyz="0 0 0.25" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+        <mass value="50.0"/>
+        <origin xyz="0 0 0.25" rpy="0 0 0"/>
+        <inertia ixx="5.0" ixy="0.0" ixz="0.0" iyy="5.0" iyz="0.0" izz="5.0"/>
+    </inertial>
+    </link>
+
+    <!-- Front Left Wheel -->
+    <link name="front_left_wheel">
+    <visual>
+        <geometry>
+        <cylinder radius="0.15" length="0.1"/>
+        </geometry>
+        <origin xyz="0.6 0.4 0.15" rpy="-${pi/2} 0 0"/>
+        <material name="black"/>
+    </visual>
+    <collision>
+        <geometry>
+        <cylinder radius="0.15" length="0.1"/>
+        </geometry>
+        <origin xyz="0.6 0.4 0.15" rpy="-${pi/2} 0 0"/>
+    </collision>
+    </link>
+
+    <!-- Front Right Wheel -->
+    <link name="front_right_wheel">
+    <visual>
+        <geometry>
+        <cylinder radius="0.15" length="0.1"/>
+        </geometry>
+        <origin xyz="0.6 -0.4 0.15" rpy="${pi/2} 0 0"/>
+        <material name="black"/>
+    </visual>
+    <collision>
+        <geometry>
+        <cylinder radius="0.15" length="0.1"/>
+        </geometry>
+        <origin xyz="0.6 -0.4 0.15" rpy="${pi/2} 0 0"/>
+    </collision>
+    </link>
+
+  <!-- Rear Left Wheel -->
+  <link name="rear_left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.1"/>
+      </geometry>
+      <origin xyz="-0.6 0.4 0.15" rpy="-${pi/2} 0 0"/>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.15" length="0.1"/>
+      </geometry>
+      <origin xyz="-0.6 0.4 0.15" rpy="-${pi/2} 0 0"/>
+    </collision>
+  </link>
+
+  <!-- Rear Right Wheel -->
+  <link name="rear_right_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.1"/>
+      </geometry>
+      <origin xyz="-0.6 -0.4 0.15" rpy="${pi/2} 0 0"/>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.15" length="0.1"/>
+      </geometry>
+      <origin xyz="-0.6 -0.4 0.15" rpy="${pi/2} 0 0"/>
+    </collision>
+  </link>
+
+  <!-- Front Left Steering Joint -->
+  <joint name="front_left_steer_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="front_left_wheel"/>
+    <origin xyz="0.6 0.4 0.15" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.5" upper="0.5" effort="10.0" velocity="1.0"/>
+  </joint>
+
+  <!-- Front Right Steering Joint -->
+  <joint name="front_right_steer_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="front_right_wheel"/>
+    <origin xyz="0.6 -0.4 0.15" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.5" upper="0.5" effort="10.0" velocity="1.0"/>
+  </joint>
+
+  <!-- Rear Left Fixed Joint -->
+  <joint name="rear_left_wheel_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="rear_left_wheel"/>
+    <origin xyz="-0.6 0.4 0.15" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Rear Right Fixed Joint -->
+  <joint name="rear_right_wheel_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="rear_right_wheel"/>
+    <origin xyz="-0.6 -0.4 0.15" rpy="0 0 0"/>
+  </joint>
+</robot>
