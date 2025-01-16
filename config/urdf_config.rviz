@@ -3,7 +3,8 @@ Panels:
     Help Height: 78
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /Map1/Update Topic1
       Splitter Ratio: 0.5
     Tree Height: 617
   - Class: rviz_common/Selection
@@ -69,22 +70,20 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        base_link:
-          base_footprint:
-            {}
-          chassis:
-            caster_wheel:
-              {}
-            laser_frame:
-              {}
-          left_wheel:
-            {}
-          right_wheel:
-            {}
         map:
-          {}
-        odom:
-          {}
+          odom:
+            base_link:
+              base_footprint:
+                {}
+              chassis:
+                caster_wheel:
+                  {}
+                laser_frame:
+                  {}
+              left_wheel:
+                {}
+              right_wheel:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -190,11 +189,38 @@ Visualization Manager:
         Value: /map
       Update Topic:
         Depth: 5
-        Durability Policy: Volatile
+        Durability Policy: Transient Local
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /map_updates
       Use Timestamp: false
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz_default_plugins/Path
+      Color: 25; 255; 0
+      Enabled: true
+      Head Diameter: 0.30000001192092896
+      Head Length: 0.20000000298023224
+      Length: 0.30000001192092896
+      Line Style: Lines
+      Line Width: 0.029999999329447746
+      Name: Path
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.029999999329447746
+      Shaft Diameter: 0.10000000149011612
+      Shaft Length: 0.10000000149011612
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /plan
       Value: true
   Enabled: true
   Global Options:
@@ -268,5 +294,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1200
-  X: 72
-  Y: 255
+  X: 379
+  Y: 301
